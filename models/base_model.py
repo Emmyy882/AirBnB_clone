@@ -33,7 +33,7 @@ class BaseModel:
     def __str__(self):
         """Returns a string representation of the BaseModel instance"""
         cls = self.__class__.__name__
-        return f'[cls] (<self.id>) self.__dict__'
+        return f'[cls] (self.id) self.__dict__'
 
     def save(self):
         """updates the public instance attribute updated_at with the current datetime"""
