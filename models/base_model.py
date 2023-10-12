@@ -56,3 +56,55 @@ class BaseModel:
         ...the instance"""
         return {
                 'id': sel
+                }
+
+if __name__ == '__main__':
+    import unittest
+
+    class TestBaseModel(unittest.TestCase):
+        """
+        Test cases for the BaseModel class.
+        """
+
+        def test_init(self):
+            """Tests the initialization of the BaseModel class."""
+            i = BaseModel()
+            self.assertIsInstance(i, BaseModel)
+
+        def test_id(self):
+            """Tests the type of id."""
+            new = BaseModel()
+            self.assertEqual(type(new.id), str)
+
+        def test_created_at(self):
+            """Tests the type of created_at."""
+            new = BaseModel()
+            self.assertEqual(type(new.created_at), datetime)
+
+        def test_updated_at(self):
+            """Tests the type of updated_at."""
+            new = BaseModel()
+            self.assertEqual(type(new.updated_at), datetime)
+
+        def test_str(self):
+            """Tests the __str__ function of the BaseModel class."""
+            i = BaseModel()
+            self.assertEqual(str(i), '[BaseModel] ({}) {}'.format(i.id, i.__dict__))
+
+        def test_save(self):
+            """Tests the save function of the BaseModel class."""
+            i = BaseModel()
+            i.save()
+            self.assertIsNotNone(i.updated_at)
+
+        def test_to_dict(self):
+            """Tests the to_dict function of the BaseModel class."""
+            i = BaseModel()
+            d = i.to_dict()
+            self.assertEqual(type(d), dict)
+            self.assertIn('__class__', d)
+            self.assertIn('id', d)
+            self.assertIn('created_at', d)
+            self.assertIn('updated_at', d)
+
+    unittest.main()
