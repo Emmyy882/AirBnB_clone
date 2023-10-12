@@ -221,8 +221,7 @@ show <class> <id>
 ```
 ## Authors
 <details> 
-<summary>Agbaje Itafe Emmanuel</summary>
-<summary>Udoka Victor Isaac</summary>
+<summary>Agbaje Itafe Emmanuel and Udoka Victor Isaac</summary>
 <ul>
 <li><a href="https://www.github.com/Emmyy882">Github</a></li>
 <li><a href="mailto:emmaagbaje3@gmail.com">e-mail</a></li>
