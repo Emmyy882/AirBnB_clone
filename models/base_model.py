@@ -42,12 +42,15 @@ class BaseModel:
                     else:
                         setattr(self, key, value)
 
+<<<<<<< HEAD
             if not hasattr(self, 'id'):
                 setattr(self, 'id', str(uuid.uuid4()))
             if not hasattr(self, 'created_at'):
                 setattr(self, 'created_at', datetime.now())
             if not hasattr(self, 'updated_at'):
                 setattr(self, 'updated_at', datetime.now())
+=======
+>>>>>>> refs/remotes/origin/main
 
     def __str__(self):
         """Returns a string representation of the BaseModel instance"""
