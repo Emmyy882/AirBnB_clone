@@ -4,6 +4,7 @@
 import os
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
@@ -41,6 +42,12 @@ class BaseModel:
                     else:
                         setattr(self, key, value)
 
+            if not hasattr(self, 'id'):
+                setattr(self, 'id', str(uuid.uuid4()))
+            if not hasattr(self, 'created_at'):
+                setattr(self, 'created_at', datetime.now())
+            if not hasattr(self, 'updated_at'):
+                setattr(self, 'updated_at', datetime.now())
 
     def __str__(self):
         """Returns a string representation of the BaseModel instance"""
@@ -50,6 +57,9 @@ class BaseModel:
     def save(self):
         """updates the public instance attribute updated_at with the current datetime"""
         self.updated_at = datetime.now()
+        storage.new(self)
+        # call the save() method of storage
+        storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all keys/values of __dict__ of..
