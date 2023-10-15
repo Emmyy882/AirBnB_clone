@@ -6,6 +6,14 @@ import cmd
 import os
 import sys
 from models.base_model import BaseModel
+from models import storage
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+
 
 
 class HBNBCommand(cmd.Cmd):
@@ -16,6 +24,17 @@ class HBNBCommand(cmd.Cmd):
 
     # custom prompt to print if in interactive mode
     prompt = "(hbnb) " if sys.stdin.isatty() else ''
+
+    # Dictionary mapping class names to their corresponding classes
+    classes = {
+        'BaseModel': BaseModel,
+        'User': User,
+        'Place': Place,
+        'State': State,
+        'City': City,
+        'Amenity': Amenity,
+        'Review': Review
+    }
 
     def do_quit(self, arg):
         """Quit command to exit the program\n"""
@@ -131,6 +150,9 @@ class HBNBCommand(cmd.Cmd):
                 print_list.append(str(v))
 
         print(print_list)
+
+    def do_update(self, args):
+        pass
 
 
 if __name__ == '__main__':

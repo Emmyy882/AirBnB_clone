@@ -17,7 +17,7 @@ class BaseModel:
                 ...created and will be updated every time the object is changed
     """
 
-    id = f'{uuid.uuid4()}'
+    id = str(uuid.uuid4())
     created_at = datetime.now().isoformat()
     updated_at = datetime.now().isoformat()
 
@@ -51,7 +51,7 @@ class BaseModel:
     def __str__(self):
         """Returns a string representation of the BaseModel instance"""
         cls = self.__class__.__name__
-        return f'[cls] (self.id) self.__dict__'
+        return f"[cls] (self.id) self.__dict__"
 
     def delete(self):
         """
