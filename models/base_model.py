@@ -117,7 +117,8 @@ if __name__ == '__main__':
             Tests the __str__ function of the BaseModel class.
             """
             i = BaseModel()
-            self.assertEqual(str(i), '[BaseModel] ({}) {}'.format(i.id, i.__dict__))
+            self.assertEqual(str(i),
+                             '[BaseModel] ({}) {}'.format(i.id, i.__dict__))
 
         def test_save(self):
             """Tests the save function of the BaseModel class."""
