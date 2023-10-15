@@ -9,7 +9,7 @@ from models import storage
 
 class BaseModel:
     """A BaseModel that defines all common attributes/methods for other classes
-        
+
         Attributes:
             id (str): stores a unique id for each BaseModel
             created_at: assign with the current datatime when an instance is...
@@ -25,7 +25,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """
         Initializes a new instance for the Basemodel
-        
+
         Args:
             *args: argument list with variable length.
             **kwargs: variable length of dictionary argument.
@@ -42,15 +42,12 @@ class BaseModel:
                     else:
                         setattr(self, key, value)
 
-<<<<<<< HEAD
             if not hasattr(self, 'id'):
                 setattr(self, 'id', str(uuid.uuid4()))
             if not hasattr(self, 'created_at'):
                 setattr(self, 'created_at', datetime.now())
             if not hasattr(self, 'updated_at'):
                 setattr(self, 'updated_at', datetime.now())
-=======
->>>>>>> refs/remotes/origin/main
 
     def __str__(self):
         """Returns a string representation of the BaseModel instance"""
@@ -66,7 +63,8 @@ class BaseModel:
         storage.delete(self)
 
     def save(self):
-        """updates the public instance attribute updated_at with the current datetime"""
+        """updates the public instance attribute updated_at with the current..
+        ...datetime"""
         self.updated_at = datetime.now()
         storage.new(self)
         # call the save() method of storage
@@ -84,6 +82,7 @@ class BaseModel:
                     res[key] = value
         res['__class__'] = self.__class__.__name__
         return res
+
 
 if __name__ == '__main__':
     import unittest
@@ -114,7 +113,9 @@ if __name__ == '__main__':
             self.assertEqual(type(new.updated_at), datetime)
 
         def test_str(self):
-            """Tests the __str__ function of the BaseModel class."""
+            """
+            Tests the __str__ function of the BaseModel class.
+            """
             i = BaseModel()
             self.assertEqual(str(i), '[BaseModel] ({}) {}'.format(i.id, i.__dict__))
 

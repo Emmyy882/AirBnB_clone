@@ -5,14 +5,15 @@
 import cmd
 import os
 import sys
-#from models.base_model import BaseModel
+from models.base_model import BaseModel
+
 
 class HBNBCommand(cmd.Cmd):
     """
     A command interpreter that prints a prompt to the console
     for the AirBnB Project
     """
-    
+
     # custom prompt to print if in interactive mode
     prompt = "(hbnb) " if sys.stdin.isatty() else ''
 
@@ -21,17 +22,16 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, arg):
-        """Handles the command of "End Of File" to 
-        exit the program"""
-        exit (0)
+        """Handles the command of "End Of File" to exit the program"""
+        exit(0)
 
     def emptyline(self):
         pass
 
     def do_create(self, args):
         """
-        Create Command
-        
+        Create Command.
+
         Creates a new instance of a Class.
         """
         try:
@@ -48,7 +48,8 @@ class HBNBCommand(cmd.Cmd):
         """
         Show Command.
 
-        prints the string representation of an instance based on the class name and id
+        prints the string representation of an instance based on the...
+                ...class name and id
         Usage: show <className> <objectId>
         """
         new = args.partition(" ")
@@ -112,7 +113,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """
-        Prints all string representation of all instances based or not on the class
+        Prints all string representation of all instances based or not on...
+                        ...the class
         """
         print_list = []
 
@@ -128,7 +130,8 @@ class HBNBCommand(cmd.Cmd):
             for k, v in storage.all().items():
                 print_list.append(str(v))
 
-        print(print_list) 
+        print(print_list)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
