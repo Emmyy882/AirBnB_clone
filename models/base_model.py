@@ -41,12 +41,15 @@ class BaseModel:
                     else:
                         setattr(self, key, value)
 
+            """
             if not hasattr(self, 'id'):
                 setattr(self, 'id', str(uuid.uuid4()))
             if not hasattr(self, 'created_at'):
                 setattr(self, 'created_at', datetime.now())
             if not hasattr(self, 'updated_at'):
                 setattr(self, 'updated_at', datetime.now())
+                """
+        storage.new(self)
 
     def __str__(self):
         """Returns a string representation of the BaseModel instance"""
@@ -66,7 +69,7 @@ class BaseModel:
         ...datetime"""
         from models import storage
         self.updated_at = datetime.now()
-        storage.new(self)
+        #storage.new(self)
         # call the save() method of storage
         storage.save()
 
