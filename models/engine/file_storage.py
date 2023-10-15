@@ -15,7 +15,7 @@ class FileStorage():
             __objects: dictionary to store all objects by <class name>.id
     """
 
-    __file_path = 'file.json'
+    __file_path = "file.json"
     __objects = {}
 
     def __init__(self):
