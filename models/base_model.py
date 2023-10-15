@@ -57,6 +57,14 @@ class BaseModel:
         cls = self.__class__.__name__
         return f'[cls] (self.id) self.__dict__'
 
+    def delete(self):
+        """
+        Deletes the BaseModel instance from the storage.
+
+        This method removes the current instance from the storage system.
+        """
+        storage.delete(self)
+
     def save(self):
         """updates the public instance attribute updated_at with the current datetime"""
         self.updated_at = datetime.now()
@@ -67,9 +75,15 @@ class BaseModel:
     def to_dict(self):
         """Returns a dictionary containing all keys/values of __dict__ of..
         ...the instance"""
-        return {
-                'id': sel
-                }
+        res = {}
+        for key, value in self.__dict__.items():
+            if key != '_sa_instance_state':
+                if isinstance(value, datetime):
+                    res[key] = value.isoformat()
+                else:
+                    res[key] = value
+        res['__class__'] = self.__class__.__name__
+        return res
 
 if __name__ == '__main__':
     import unittest

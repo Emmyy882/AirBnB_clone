@@ -49,8 +49,86 @@ class HBNBCommand(cmd.Cmd):
         Show Command.
 
         prints the string representation of an instance based on the class name and id
+        Usage: show <className> <objectId>
         """
-        pass
+        new = args.partition(" ")
+        cls_name = new[0]
+        cls_id = new[2]
+
+        # Guard against trailing args
+        if cls_id and ' ' in cls_id:
+            cls_id = cls_id.partition(' ')[0]
+
+        if not cls_name:
+            print("** class name missing **")
+            return
+
+        if cls_name not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+
+        if not cls_id:
+            print("** instance id missing **")
+            return
+
+        key = cls_name + "." + cls_id
+        try:
+            print(storage.all()[key])
+        except KeyError:
+            print("** no instance found **")
+
+    def do_destroy(self, args):
+        """
+        Destroys a specified object.
+
+        Usage: destroy <className> <objectId>
+        """
+
+        new = args.partition(" ")
+        cls_name = new[0]
+        cls_id = new[2]
+        if cls_id and ' ' in cls_id:
+            cls_id = cls_id.partition(' ')[0]
+
+        if not cls_name:
+            print("** class name missing **")
+            return
+
+        if cls_name not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+
+        if not cls_id:
+            print("** instance id missing **")
+            return
+
+        key = cls_name + "." + cls_id
+
+        try:
+            storage.delete(storage.all()[key])
+            storage.save()
+        except KeyError:
+            print("** no instance found **")
+
+    def do_all(self, args):
+        """
+        Prints all string representation of all instances based or not on the class
+        """
+        print_list = []
+
+        if args:
+            args = args.split(' ')[0]  # Remove possible trailing args
+            if args not in HBNBCommand.classes:
+                print("** class doesn't exist **")
+                return
+            for k, v in storage.all().items():
+                if k.split('.')[0] == args:
+                    print_list.append(str(v))
+        else:
+            for k, v in storage.all().items():
+                print_list.append(str(v))
+
+        print(print_list) 
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
