@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """A script of a class that inherits from another class"""
-from base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class User(BaseModel):
