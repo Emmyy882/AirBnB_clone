@@ -15,7 +15,6 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-
 class HBNBCommand(cmd.Cmd):
     """
     A command interpreter that prints a prompt to the console
@@ -35,6 +34,74 @@ class HBNBCommand(cmd.Cmd):
         'Amenity': Amenity,
         'Review': Review
     }
+
+    # List of dot commands supported by the console
+    dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
+
+    def precmd(self, line):
+        """
+        Precommand Hook
+
+        This method is called just before the command is executed.
+        It reformats the command line for advanced command syntax.
+
+        Usage: <class name>.<command>([<id> [<*args> or <**kwargs>]])
+        (Brackets denote optional fields in the usage example.)
+        """
+        _cmd = _cls = _id = _args = ''  # Initialize line elements
+
+        # Scan for general formatting - i.e., '.', '(', ')'
+        if not ('.' in line and '(' in line and ')' in line):
+            return line
+
+        try:  # Parse line from left to right
+            pline = line[:]  # Parsed line
+
+            # Isolate <class name>
+            _cls = pline[:pline.find('.')]
+
+            # Isolate and validate <command>
+            _cmd = pline[pline.find('.') + 1:pline.find('(')]
+            if _cmd not in HBNBCommand.dot_cmds:
+                raise Exception
+
+            # If parentheses contain arguments, parse them
+            pline = pline[pline.find('(') + 1:pline.find(')')]
+            if pline:
+                # Partition args: (<id>, [<delim>], [<*args>])
+                pline = pline.partition(', ')  # pline converts to tuple
+
+                # Isolate _id, stripping quotes
+                _id = pline[0].replace('\"', '')
+
+                # If arguments exist beyond _id
+                pline = pline[2].strip()  # pline is now a string
+                if pline:
+                    # Check for *args or **kwargs
+                    if pline[0] == '{' and pline[-1] == '}'\
+                            and type(eval(pline)) is dict:
+                        _args = pline
+                    else:
+                        _args = pline.replace(',', '')
+            line = ' '.join([_cmd, _cls, _id, _args])
+
+        except Exception as mess:
+            pass
+        finally:
+            return line
+
+    def postcmd(self, stop, line):
+        """
+        Postcommand Hook
+
+        This method is called just after the command is executed.
+        It prints the prompt if the input stream is not
+        connected to a terminal.
+
+        """
+        if not sys.__stdin__.isatty():
+            print('(hbnb) ', end='')
+        return stop
 
     def do_quit(self, arg):
         """Quit command to exit the program\n"""

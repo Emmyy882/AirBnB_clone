@@ -52,7 +52,7 @@ class BaseModel:
     def __str__(self):
         """Returns a string representation of the BaseModel instance"""
         cls = self.__class__.__name__
-        return f"[cls] (self.id) self.__dict__"
+        return "{[]} {()} {}".format(cls, self.id, self.__dict__)
 
     def delete(self):
         """
