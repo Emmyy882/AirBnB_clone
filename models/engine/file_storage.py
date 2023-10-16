@@ -78,8 +78,7 @@ class FileStorage():
                 for key, value in temp.items():
                     obj_class = value['__class__']
                     if obj_class in classes:
-                        FileStorage.__objects[key] = classes[obj_class]
-                        (**value)
+                        self.__objects[key] = classes[obj_class](**value)
         else:
             return
 
