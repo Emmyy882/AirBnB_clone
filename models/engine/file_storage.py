@@ -71,15 +71,17 @@ class FileStorage():
             (only if the __file_path exists; otherwise do nothing.
             if the file doesn't exist, no exception should be raised.
         """
-        if not os.path.isfile(FileStorage.__file_path):
+        if os.path.isfile(FileStorage.__file_path):
+            temp = {}
+            with open(FileStorage.__file_path, 'r') as file:
+                temp = json.load(file)
+                for key, value in temp.items():
+                    obj_class = value['__class__']
+                    if obj_class in model_classes:
+                        FileStorage.__objects[key] = model_classes[obj_class]
+                        (**value)
+        else:
             return
-        temp = {}
-        with open(FileStorage.__file_path, 'r') as file:
-            temp = json.load(file)
-            for key, value in temp.items():
-                obj_class = value['__class__']
-                if obj_class in model_classes:
-                    FileStorage.__objects[key] = model_classes[obj_class](**value)
 
     def close(self):
         """Closes the storage engine"""
