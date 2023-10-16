@@ -77,8 +77,8 @@ class FileStorage():
                 temp = json.load(file)
                 for key, value in temp.items():
                     obj_class = value['__class__']
-                    if obj_class in classes:
-                        self.__objects[key] = classes[obj_class](**value)
+                    if obj_class in model_classes:
+                        self.__objects[key] = model_classes[obj_class](**value)
 
     def close(self):
         """Closes the storage engine"""
