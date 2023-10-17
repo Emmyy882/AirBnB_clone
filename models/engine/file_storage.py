@@ -71,6 +71,7 @@ class FileStorage():
             (only if the __file_path exists; otherwise do nothing.
             if the file doesn't exist, no exception should be raised.
         """
+        classes = self.model_classes
         if os.path.isfile(FileStorage.__file_path):
             temp = {}
             with open(FileStorage.__file_path, 'r') as file:
