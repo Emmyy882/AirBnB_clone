@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         pass
 
-   def do_create(self, args):
+    def do_create(self, args):
         """
         Create Command
 
@@ -187,7 +187,7 @@ class HBNBCommand(cmd.Cmd):
                 if key not in ignored_attrs:
                     setattr(new_instance, key, value)
             new_instance.save()
-            print(new_instance.id) 
+            print(new_instance.id)
 
     def do_show(self, args):
         """
