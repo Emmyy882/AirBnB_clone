@@ -3,6 +3,7 @@
 
 
 import cmd
+import re
 import os
 import sys
 import uuid
