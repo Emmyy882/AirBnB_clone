@@ -44,8 +44,7 @@ center boxes
 * No cross browsers
 * You have to follow all requirements but some margin/padding are missing - you should try to fit as much as you can to screenshots
 
-
-"https://s3.amazonaws.com/intranet-projects-files/concepts/74/hbnb_step1.png"
+"C:\Users\Emmyy\Downloads\hbnb_step1.png"
 
 # Tasks
 ## 0. Inline styling
@@ -74,4 +73,4 @@ You are not allowed to import any files
 You are not allowed to use the style tag in the head tag
 Use inline styling for all your tags
 
-"https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2021/12/98f4ac1b0644512ce7ae91a9e8e61e8fe174911d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T173123Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=69191b370878604f226a28fd7be5872420884370d2180345a0d5148ef0d7f85f"
+"C:\Users\Emmyy\Downloads\98f4ac1b0644512ce7ae91a9e8e61e8fe174911d.png"
