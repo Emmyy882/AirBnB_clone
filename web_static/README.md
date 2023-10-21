@@ -60,7 +60,7 @@ Layout:
 	* Header:
 	  * color #FF0000 (red)
 	  * height: 70px
-width: 100%
+	  * width: 100%
 	* Footer:
 	  * color #00FF00 (green)
 	  * height: 60px
