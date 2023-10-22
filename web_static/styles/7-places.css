@@ -1,0 +1,14 @@
+section.places {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-top: 20px;
+}
+
+article {
+	width: 390px;
+	padding: 20px;
+	margin: 20px;
+	border: 1px #FF5A5F solid;
+	border-radius: 4px;
+}

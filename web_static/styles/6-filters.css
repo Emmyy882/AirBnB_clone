@@ -1,0 +1,12 @@
+ul .popover {
+	color: #FAFAFA;
+	width: 100%;
+	border: 1px #DDDDDD solid;
+	border-radius: 4px;
+}
+
+div.locations:hover ul.popover,
+div.amenities:hover ul.popover {
+    display: block;
+    position: absolute;
+}
