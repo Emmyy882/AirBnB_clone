@@ -3,5 +3,5 @@ header {
 	background-color: #FF0000;
 	height: 70px;
 	width: 100%;
-	border-bottom: 1px #CCCCCC;
+	border-bottom: 1px #CCCCCC solid;
 }
